@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+COLORS:
+Back-ground : #18191a,
+Main Component: #242526,
+Hover-color: #ЗАЗВЗС
+Primary Text: #Е4EЕ6ЕВ,
+Secondary Text: #B0B3B8
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+  background-color: #18191a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
