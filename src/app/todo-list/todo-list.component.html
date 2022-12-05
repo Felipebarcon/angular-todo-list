@@ -1,17 +1,13 @@
 <div class="container">
   <form class="todo--form">
-    <input class="todo--input" type="text">
-    <button class="btn btn-primary">Ajouter</button>
+    <input class="todo--input" type="text" #newItem placeholder="add a task"
+           (keyup.enter)="addItem(newItem.value); newItem.value = ''">
+    <button class="btn btn-primary" (click)="addItem(newItem.value)">Ajouter</button>
   </form>
   <ul>
-    <li>
-      <span type="text" class="todo"></span>
-      <button class="btn btn-save">Save</button>
-      <button class="btn btn-danger">Cancel</button>
-    </li>
-    <li>
+    <li *ngFor="let item of getItems()">
       <span class="todo"></span>
-      <p class="todo-text">Learn JavaScript</p>
+      <p class="todo-text">{{ item.text}}</p>
       <button class="btn">Edit</button>
       <button class="btn btn-danger">Delete</button>
     </li>

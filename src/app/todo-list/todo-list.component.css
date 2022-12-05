@@ -85,6 +85,7 @@ input {
   outline: 0;
   border: 1px solid #ddd;
   border-radius: 3px;
+  font-size: 1.8rem;
 }
 
 ul {

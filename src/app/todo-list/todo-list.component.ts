@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,20 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  private todos: object[] = [
+  filter: 'all' | 'active' | 'done' = 'all';
+  public allItems: Item[] = [
     {
-      text: 'Je suis une todo',
+      text: 'Etudier Angular',
       done: false,
-      editMode: true,
     },
     {
       text: 'Faire du JavaScript',
-      done: true,
-      editMode: false,
+      done: false,
     },
   ];
-
   constructor() {}
 
   ngOnInit(): void {}
+
+  getItems(): Item[] {
+    if (this.filter === 'all') {
+      return this.allItems;
+    }
+    return this.allItems.filter((item) =>
+      this.filter === 'done' ? item.done : !item.done
+    );
+  }
+
+  addItem(text: string) {
+    this.allItems.unshift({
+      text,
+      done: false,
+    });
+  }
 }
