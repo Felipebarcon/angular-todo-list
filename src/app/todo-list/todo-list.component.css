@@ -7,19 +7,16 @@ Primary Text: #Е4EЕ6ЕВ,
 Secondary Text: #B0B3B8
 */
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 50rem;
-  border: 1px solid #eee;
-  border-radius: 3rem;
-  padding: 2rem;
-  background-color: #242526;
-}
-
 form {
   display: flex;
   margin-bottom: 2rem;
+}
+
+.todo--container {
+  border: 1px solid #eee;
+  border-radius: 3rem;
+  padding: 2rem;
+  width: 50rem;
 }
 
 .break-line {

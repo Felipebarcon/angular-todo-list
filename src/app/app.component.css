@@ -1,13 +1,11 @@
-.app-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container {
+  max-width: 100vh;
 }
 
-.todo--title {
-  color: white;
+h1 {
   font-size: 6.4rem;
-  margin-bottom: 10rem;
+  letter-spacing: 2px;
+  color: white;
+  position: absolute;
+  top: 2rem;
 }
