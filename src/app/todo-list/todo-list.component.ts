@@ -9,13 +9,13 @@ import { TaskService } from '../services/task.service';
 })
 export class TodoListComponent implements OnInit {
   @ViewChild('newTask') inputTask: ElementRef;
-  public allTasks: Item[] = this.taskService.getTasks();
-  constructor(private taskService: TaskService) {}
+  public todoList: Item[];
+  constructor() {}
 
   ngOnInit(): void {}
 
   addItem(description: string): void {
-    this.taskService.addItem(description);
+    this.todoList = this.taskService.addItem(description);
     this.inputTask.nativeElement.value = ' ';
   }
 

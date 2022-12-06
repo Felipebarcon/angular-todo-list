@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
-import { TaskService } from './services/task.service';
+import { LocalStorageRefService } from './services/local-storage-ref.service';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [TaskService],
+  providers: [LocalStorageRefService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
