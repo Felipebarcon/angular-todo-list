@@ -1,11 +1,12 @@
 import { ElementRef, Injectable, ViewChild } from '@angular/core';
 import { Item } from '../interfaces/item';
+import { TodoListStorageService } from './todo-list-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  public allTasks: Item[] = [
+  public todoList: Item[] = [
     {
       description: 'Learn JS',
       done: false,
@@ -13,24 +14,24 @@ export class TaskService {
   ];
   @ViewChild('newTask') inputTask: ElementRef;
 
-  constructor() {}
+  constructor(private storage: TodoListStorageService) {}
 
   getTasks() {
-    return this.allTasks;
+    return this.storage.get();
   }
-  addItem(description: string): void {
-    this.allTasks.unshift({
+  addItem(description: string): Item[] {
+    return this.storage.post(description);
+    /*    this.allTasks.unshift({
       description,
       done: false,
-    });
-    this.inputTask.nativeElement.value = ' ';
+    });*/
   }
 
   deleteTask(index: number): void {
-    this.allTasks.splice(index, 1);
+    this.todoList.splice(index, 1);
   }
 
   markAsDone(index: number): void {
-    this.allTasks[index].done = !this.allTasks[index].done;
+    this.todoList[index].done = !this.todoList[index].done;
   }
 }
