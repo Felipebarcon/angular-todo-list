@@ -7,7 +7,7 @@
   </form>
   <hr class="break-line">
   <ul>
-    <li *ngFor="let item of allTasks; let index = index">
+    <li *ngFor="let item of todoList; let index = index">
       <span (click)="markAsDone(index)" [ngClass]="item.done ? 'todo done' :
       'todo'"></span>
       <p class="todo-text">{{ item.description }}</p>

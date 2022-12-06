@@ -10,25 +10,22 @@ import { TaskService } from '../services/task.service';
 export class TodoListComponent implements OnInit {
   @ViewChild('newTask') inputTask: ElementRef;
 
-  public todoList: Item[];
+  public todoList = this.taskService.todoList;
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {}
 
   addItem(description: string): void {
-    this.todoList.unshift({
-      description,
-      done: false,
-    });
+    this.taskService.addItem(description);
     this.inputTask.nativeElement.value = ' ';
   }
 
   deleteTask(index: number): void {
-    this.todoList.splice(index, 1);
+    this.taskService.deleteTask(index);
   }
 
   markAsDone(index: number): void {
-    this.todoList[index].done = !this.todoList[index].done;
+    this.taskService.markAsDone(index);
   }
 }
