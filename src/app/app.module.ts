@@ -4,11 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

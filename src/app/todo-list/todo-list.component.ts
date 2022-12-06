@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Item } from '../interfaces/item';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,32 +8,22 @@ import { Item } from '../interfaces/item';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  filter: 'all' | 'active' | 'done' = 'all';
   @ViewChild('newTask') inputTask: ElementRef;
-
-  public allTasks: Item[] = [
-    {
-      description: 'Learn JS',
-      done: false,
-    },
-  ];
-  constructor() {}
+  public allTasks: Item[] = this.taskService.getTasks();
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {}
 
   addItem(description: string): void {
-    this.allTasks.unshift({
-      description,
-      done: false,
-    });
+    this.taskService.addItem(description);
     this.inputTask.nativeElement.value = ' ';
   }
 
   deleteTask(index: number): void {
-    this.allTasks.splice(index, 1);
+    this.taskService.deleteTask(index);
   }
 
   markAsDone(index: number): void {
-    this.allTasks[index].done = !this.allTasks[index].done;
+    this.taskService.markAsDone(index);
   }
 }
