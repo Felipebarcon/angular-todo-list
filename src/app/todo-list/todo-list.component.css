@@ -15,7 +15,7 @@ form {
 .todo--container {
   border: 1px solid #eee;
   border-radius: 3rem;
-  padding: 2rem;
+  padding: 3rem;
   width: 50rem;
 }
 
@@ -71,6 +71,19 @@ li p {
 .done {
   background: #c2fbd7;
   border: 2px solid #c2fbd7;
+}
+
+.todo--list--edit {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.todo--button-edit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 /* BUTTON */

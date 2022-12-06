@@ -11,8 +11,23 @@
       <span (click)="markAsDone(index)" [ngClass]="item.done ? 'todo done' :
       'todo'"></span>
       <p class="todo-text">{{ item.description }}</p>
-      <button class="btn" >Edit</button>
-      <button class="btn btn-danger" (click)="deleteTask(index)">Delete</button>
+      <button class="btn" (click)="editTask(index)">Edit</button>
+      <button class="btn btn-danger btn-delete" (click)="deleteTask(index)">
+        Delete</button>
     </li>
+
+    <!-- New input for edit Mode -->
+    <ul *ngFor="let item of todoList; let index = index">
+    <li class="todo--list--edit" *ngIf="item.editMode === true">
+      <input class="todo--input" type="text" #newValue
+             [value]="item.description"
+             placeholder="Add a new task">
+      <div class="todo--button-edit">
+      <button class="btn btn-primary" (click)="saveTask(newValue.value, index)">
+        Save</button>
+      <button class="btn btn-danger" (click)="editTask(index)">Cancel</button>
+      </div>
+    </li>
+    </ul>
   </ul>
 </div>

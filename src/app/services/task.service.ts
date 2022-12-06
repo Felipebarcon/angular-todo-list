@@ -9,9 +9,11 @@ export class TaskService {
     {
       description: 'Learn JS',
       done: false,
+      editMode: false,
     },
   ];
   @ViewChild('newTask') inputTask: ElementRef;
+  @ViewChild('newValue') newValueTask: ElementRef;
 
   addItem(description: string): void {
     this.todoList.unshift({
@@ -20,6 +22,14 @@ export class TaskService {
     });
   }
 
+  editTask(index: number): void {
+    this.todoList[index].editMode = !this.todoList[index].editMode;
+  }
+
+  saveTask(task: string, index: number): void {
+    this.todoList[index].description = task;
+    this.todoList[index].editMode = false;
+  }
   deleteTask(index: number): void {
     this.todoList.splice(index, 1);
   }

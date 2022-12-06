@@ -9,6 +9,7 @@ import { TaskService } from '../services/task.service';
 })
 export class TodoListComponent implements OnInit {
   @ViewChild('newTask') inputTask: ElementRef;
+  @ViewChild('newValue') newValueTask: ElementRef;
 
   public todoList = this.taskService.todoList;
 
@@ -19,6 +20,14 @@ export class TodoListComponent implements OnInit {
   addItem(description: string): void {
     this.taskService.addItem(description);
     this.inputTask.nativeElement.value = ' ';
+  }
+
+  editTask(index: number): void {
+    this.taskService.editTask(index);
+  }
+
+  saveTask(task: string, index: number): void {
+    this.taskService.saveTask(task, index);
   }
 
   deleteTask(index: number): void {
