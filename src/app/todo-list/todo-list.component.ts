@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Item } from '../interfaces/item';
 
 @Component({
@@ -8,7 +8,7 @@ import { Item } from '../interfaces/item';
 })
 export class TodoListComponent implements OnInit {
   filter: 'all' | 'active' | 'done' = 'all';
-  value: string;
+  @ViewChild('newTask') inputTask: ElementRef;
 
   public allTasks: Item[] = [
     {
@@ -20,14 +20,15 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addItem(description: string) {
+  addItem(description: string): void {
     this.allTasks.unshift({
       description,
       done: false,
     });
+    this.inputTask.nativeElement.value = ' ';
   }
 
-  deleteTask(index: number) {
+  deleteTask(index: number): void {
     this.allTasks.splice(index, 1);
   }
 
