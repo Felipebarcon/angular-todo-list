@@ -22,11 +22,11 @@ export class TaskService {
     });
   }
 
-  editTask(index: number): void {
+  toggleEditTask(index: number): void {
     this.todoList[index].editMode = !this.todoList[index].editMode;
   }
 
-  saveTask(task: string, index: number): void {
+  saveEditTask(task: string, index: number): void {
     this.todoList[index].description = task;
     this.todoList[index].editMode = false;
   }

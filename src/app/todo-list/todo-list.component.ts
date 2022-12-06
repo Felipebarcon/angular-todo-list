@@ -22,12 +22,12 @@ export class TodoListComponent implements OnInit {
     this.inputTask.nativeElement.value = ' ';
   }
 
-  editTask(index: number): void {
-    this.taskService.editTask(index);
+  toggleEditTask(index: number): void {
+    this.taskService.toggleEditTask(index);
   }
 
-  saveTask(task: string, index: number): void {
-    this.taskService.saveTask(task, index);
+  saveEditTask(task: string, index: number): void {
+    this.taskService.saveEditTask(task, index);
   }
 
   deleteTask(index: number): void {
