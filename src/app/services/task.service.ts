@@ -19,6 +19,7 @@ export class TaskService {
     this.todoList.unshift({
       description,
       done: false,
+      editMode: false,
     });
   }
 
