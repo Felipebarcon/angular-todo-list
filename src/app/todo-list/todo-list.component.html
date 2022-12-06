@@ -1,17 +1,16 @@
 <div class="container">
   <form class="todo--form">
-    <input class="todo--input" type="text" [(ngModel)]="newTask"
-           [ngModelOptions]="{standalone: true}"
-           value=""
+    <input class="todo--input" type="text" #newTask
            placeholder="Add a new task"
-           (keyup.enter)="addItem()">
-    <button class="btn btn-primary" (click)="addItem()">Ajouter</button>
+           (keyup.enter)="addItem(newTask.value)">
+    <button class="btn btn-primary" (click)="addItem(newTask.value)">Ajouter
+    </button>
   </form>
   <hr class="break-line">
   <ul>
-    <li *ngFor="let item of allItems; let index = index">
+    <li *ngFor="let item of allTasks; let index = index">
       <span class="todo"></span>
-      <p class="todo-text">{{ item }}</p>
+      <p class="todo-text">{{ item.description }}</p>
       <button class="btn">Edit</button>
       <button class="btn btn-danger" (click)="deleteTask(index)">Delete</button>
     </li>

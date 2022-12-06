@@ -7,30 +7,27 @@ import { Item } from '../interfaces/item';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  public allItems: string[] = ['Learn JS'];
+  filter: 'all' | 'active' | 'done' = 'all';
+  value: string;
 
-  public newTask: string;
+  public allTasks: Item[] = [
+    {
+      description: 'Learn JS',
+      done: true,
+    },
+  ];
   constructor() {}
 
   ngOnInit(): void {}
 
-  addItem() {
-    if (this.newTask === '') {
-    } else {
-      this.allItems.unshift(this.newTask);
-      this.newTask = '';
-    }
+  addItem(description: string) {
+    this.allTasks.unshift({
+      description,
+      done: false,
+    });
   }
 
   deleteTask(index: number) {
-    this.allItems.splice(index, 1);
+    this.allTasks.splice(index, 1);
   }
-
-  /*  getItems(): [] {
-    return this.allItems.filter((item) => (item.done ? item.done : !item.done));
-  }
-
-  remove(item: Item) {
-    this.allItems.splice(this.allItems.indexOf(item), 1);
-  }*/
 }

@@ -1,4 +1,4 @@
 export interface Item {
-  text: string;
-  done: boolean;
+  description: string;
+  done?: boolean;
 }
