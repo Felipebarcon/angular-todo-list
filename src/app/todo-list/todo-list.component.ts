@@ -13,7 +13,7 @@ export class TodoListComponent implements OnInit {
   public allTasks: Item[] = [
     {
       description: 'Learn JS',
-      done: true,
+      done: false,
     },
   ];
   constructor() {}
@@ -29,5 +29,9 @@ export class TodoListComponent implements OnInit {
 
   deleteTask(index: number) {
     this.allTasks.splice(index, 1);
+  }
+
+  markAsDone(index: number): void {
+    this.allTasks[index].done = !this.allTasks[index].done;
   }
 }

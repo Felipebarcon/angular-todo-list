@@ -1,17 +1,17 @@
 <div class="container">
   <form class="todo--form">
     <input class="todo--input" type="text" #newTask
-           placeholder="Add a new task"
-           (keyup.enter)="addItem(newTask.value)">
+           placeholder="Add a new task">
     <button class="btn btn-primary" (click)="addItem(newTask.value)">Ajouter
     </button>
   </form>
   <hr class="break-line">
   <ul>
     <li *ngFor="let item of allTasks; let index = index">
-      <span class="todo"></span>
+      <span (click)="markAsDone(index)" [ngClass]="item.done ? 'todo done' :
+      'todo'"></span>
       <p class="todo-text">{{ item.description }}</p>
-      <button class="btn">Edit</button>
+      <button class="btn" >Edit</button>
       <button class="btn btn-danger" (click)="deleteTask(index)">Delete</button>
     </li>
   </ul>
